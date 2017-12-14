@@ -43,6 +43,7 @@
     <Compile Include="IService\IKeyService.cs" />
     <Compile Include="IService\INoteService.cs" />
     <Compile Include="Model\Alteration.cs" />
+    <Compile Include="Model\Interval.cs" />
     <Compile Include="Model\IntervalQuality.cs" />
     <Compile Include="Model\Key.cs" />
     <Compile Include="Model\Note.cs" />
