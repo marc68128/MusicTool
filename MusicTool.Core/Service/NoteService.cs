@@ -1,4 +1,5 @@
-﻿using MusicTool.Core.IService;
+﻿using System;
+using MusicTool.Core.IService;
 using MusicTool.Core.Model;
 
 namespace MusicTool.Core.Service
@@ -12,17 +13,36 @@ namespace MusicTool.Core.Service
         }
         public Note GetMinorSecond(Note note)
         {
+            return GetSecond(note, IntervalQuality.Minor);        
+        }
+
+        public Note GetMajorSecond(Note note)
+        {
+            return GetSecond(note, IntervalQuality.Major);
+        }
+
+        private Note GetSecond(Note note, IntervalQuality intervalQuality)
+        {
+            if (intervalQuality != IntervalQuality.Minor && intervalQuality != IntervalQuality.Major)
+                throw new ArgumentException($"A second can only be major or minor, you tried to get a {intervalQuality} second.");
+
             var secondKey = _keyService.GetNextKey(note.Key);
-            var intervalBetweenSecondKeyAndTarget = (_keyService.GetInterval(note.Key, secondKey) - (int)note.Alteration) - 1;
+            var intervalBetweenSecondKeyAndTarget = (_keyService.GetInterval(note.Key, secondKey) - (int)note.Alteration) - (intervalQuality == IntervalQuality.Minor ? 1 : 2);
 
-            if (intervalBetweenSecondKeyAndTarget == 0)
-                return new Note(secondKey);
+            var alteration = GetAlterationFromInterval(intervalBetweenSecondKeyAndTarget); 
 
-            if (intervalBetweenSecondKeyAndTarget <= 6)
-                return new Note(secondKey, (Alteration)(-intervalBetweenSecondKeyAndTarget));
-            
+            return new Note(secondKey, alteration);
+        }
 
-            return new Note(secondKey, (Alteration)(12 - intervalBetweenSecondKeyAndTarget));         
+        private Alteration GetAlterationFromInterval(int interval)
+        {
+            if (interval == 0)
+                return Alteration.None;
+
+            if (interval <= 6)
+                return (Alteration)(-interval);
+
+            return (Alteration)(12 - interval);
         }
     }
 }
