@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MusicTool.Core.Model;
+using MusicTool.Core.Model.Enum;
 using MusicTool.Core.Service;
 using NUnit.Framework;
 
@@ -66,7 +67,7 @@ namespace MusicTool.Core.Test
         [TestCase(Key.C, Key.G, 7)]
         public void Test_GetInterval(Key key1, Key key2, int expectedInterval)
         {
-            var interval = _keyService.GetInterval(key1, key2); 
+            var interval = _keyService.GetHalfStepCountBetweenTwoKey(key1, key2); 
             Assert.That(interval, Is.EqualTo(expectedInterval));
         }
     }

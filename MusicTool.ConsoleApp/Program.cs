@@ -13,11 +13,6 @@ namespace MusicTool.ConsoleApp
         static void Main(string[] args)
         {
             var s = new NoteService();
-            var t1 = s.GetMinorSecond(new Note(Key.C));
-            var t2 = s.GetMinorSecond(new Note(Key.C,  Alteration.Flat));
-            var t3 = s.GetMinorSecond(new Note(Key.C, Alteration.Sharp));
-            var t4 = s.GetMinorSecond(new Note(Key.C, Alteration.DoubleFlat));
-
         }
     }
 }

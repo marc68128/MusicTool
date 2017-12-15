@@ -40,14 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exception\NotExistingIntervalException.cs" />
     <Compile Include="IService\IKeyService.cs" />
     <Compile Include="IService\INoteService.cs" />
-    <Compile Include="Model\Alteration.cs" />
-    <Compile Include="Model\Interval.cs" />
-    <Compile Include="Model\IntervalQuality.cs" />
-    <Compile Include="Model\Key.cs" />
+    <Compile Include="Model\Chord.cs" />
+    <Compile Include="Model\Enum\Alteration.cs" />
+    <Compile Include="Model\Enum\ChordQuality.cs" />
+    <Compile Include="Model\Enum\Interval.cs" />
+    <Compile Include="Model\Enum\IntervalQuality.cs" />
+    <Compile Include="Model\Enum\Key.cs" />
     <Compile Include="Model\Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\ChordService.cs" />
     <Compile Include="Service\KeyService.cs" />
     <Compile Include="Service\NoteService.cs" />
   </ItemGroup>

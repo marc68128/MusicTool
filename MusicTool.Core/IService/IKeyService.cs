@@ -1,4 +1,5 @@
 ﻿using MusicTool.Core.Model;
+using MusicTool.Core.Model.Enum;
 
 namespace MusicTool.Core.IService
 {
@@ -6,6 +7,6 @@ namespace MusicTool.Core.IService
     {
         Key GetNextKey(Key key);
         Key GetPreviousKey(Key key);
-        int GetInterval(Key k1, Key k2);
+        int GetHalfStepCountBetweenTwoKey(Key k1, Key k2);
     }
 }

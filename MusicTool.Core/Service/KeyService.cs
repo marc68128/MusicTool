@@ -3,6 +3,7 @@ using System.ComponentModel.Design;
 using System.Linq;
 using MusicTool.Core.IService;
 using MusicTool.Core.Model;
+using MusicTool.Core.Model.Enum;
 
 namespace MusicTool.Core.Service
 {
@@ -33,7 +34,7 @@ namespace MusicTool.Core.Service
             return outKey; 
         }
 
-        public int GetInterval(Key k1, Key k2)
+        public int GetHalfStepCountBetweenTwoKey(Key k1, Key k2)
         {
             return (12 + ((int)k2 - (int)k1)) % 12;
         }
